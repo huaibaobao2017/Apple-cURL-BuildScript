@@ -33,7 +33,6 @@ $ ./cURL.sh
     --without-libpsl \
     --without-libidn2 \
     --without-nghttp2 \
-    --enable-ipv6 \
     --disable-verbose \
     --disable-dependency-tracking \
     --disable-ldap \

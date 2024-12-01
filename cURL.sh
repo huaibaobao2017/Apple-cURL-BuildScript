@@ -88,7 +88,7 @@ build() {
   ./configure \
     --host="${HOST}" \
     --prefix "${OUTPUT_DIR}/${ARCH}-${SDK}" \
-    --disable-shared --enable-static --with-secure-transport --without-libpsl --without-libidn2 --without-nghttp2 --enable-ipv6 --disable-verbose --disable-dependency-tracking --disable-ldap --disable-ldaps --without-libidn2
+    --disable-shared --enable-static --with-secure-transport --without-libpsl --without-libidn2 --without-nghttp2 --disable-verbose --disable-dependency-tracking --disable-ldap --disable-ldaps
 
   jobs=$(sysctl -n hw.logicalcpu_max)
 
