@@ -20,7 +20,7 @@ $ ./cURL.sh
 ## Output
 
 ```
-./build/curl/<CURL_VERSION>/curl.xcframework
+./build/curl/<CURL_VERSION>/libcurl.xcframework
 ```
 
 ## Configure options

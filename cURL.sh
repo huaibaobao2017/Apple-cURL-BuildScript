@@ -78,7 +78,7 @@ build() {
 
   cd_or_abort "$CURL_SRC_CURRENT"
 
-  export CFLAGS="-arch ${ARCH} -pipe -Os -gdwarf-2 -isysroot ${SDK_PATH} -m${SDK}-version-min=${DEPLOYMENT_TARGET} -fembed-bitcode -Werror=partial-availability"
+  export CFLAGS="-arch ${ARCH} -pipe -Os -gdwarf-2 -isysroot ${SDK_PATH} -m${SDK}-version-min=${DEPLOYMENT_TARGET}"
   export LDFLAGS="-arch ${ARCH} -isysroot ${SDK_PATH}"
 
   echo "Building variant -> CFLAGS=$CFLAGS"
@@ -208,7 +208,7 @@ xcodebuild -create-xcframework \
   -headers $OUTPUT_DIR/appletvos/include \
   -library $OUTPUT_DIR/appletvsimulator/libcurl.a \
   -headers $OUTPUT_DIR/appletvsimulator/include \
-  -output $OUTPUT_DIR/curl.xcframework
+  -output $OUTPUT_DIR/libcurl.xcframework
 
 doneSection
 
