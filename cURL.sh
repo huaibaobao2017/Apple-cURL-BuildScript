@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CURL_VERSION=8.16.0
+CURL_VERSION=8.11.0
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SRCDIR="$CURRENT_DIR/src"
@@ -67,12 +67,16 @@ build_curl() {
             -DCMAKE_OSX_SYSROOT="$SYSROOT" \
             -DCMAKE_OSX_DEPLOYMENT_TARGET="$DEPLOYMENT_TARGET" \
             -DCURL_STATICLIB=ON \
-            -DCURL_USE_SECTRANSP=ON \
+            -DCMAKE_EXE_LINKER_FLAGS="-framework SystemConfiguration -framework CoreFoundation -framework Security" \
+            -DCURL_USE_SECTRANSPORT=ON \
             -DBUILD_SHARED_LIBS=OFF \
             -DBUILD_CURL_EXE=OFF \
             -DBUILD_TESTING=OFF \
             -DCURL_USE_LIBSSH2=OFF \
             -DCURL_USE_OPENSSL=OFF \
+            -DUSE_NGHTTP2=OFF \
+            -DUSE_BROTLI=OFF \
+            -DCURL_USE_BROTLI=OFF \
             -DCURL_USE_ZLIB=OFF \
             -DCURL_USE_ZSTD=OFF \
             -DCURL_ZSTD=OFF \
@@ -80,6 +84,8 @@ build_curl() {
             -DCURL_USE_LIBIDN2=OFF \
             -DCURL_USE_LIBPSL=OFF \
             -DUSE_LIBPSL=OFF \
+            -DCURL_DISABLE_LDAP=ON \
+            -DCURL_DISABLE_LDAPS=ON \
             -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR"
 
         cmake --build . --config Release --target install
